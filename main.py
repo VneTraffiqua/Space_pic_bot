@@ -1,5 +1,12 @@
 import requests
 from pathlib import Path
+import urllib.parse
+import os
+
+
+def get_extension_file(user_url):
+    parsed_url = urllib.parse.urlsplit(user_url)
+    return os.path.splitext(parsed_url.path)[1]
 
 
 def get_images(file_path, images_url):
@@ -25,6 +32,7 @@ if __name__ == '__main__':
     #get_images(path, url)
     #print(get_url_pic_spacex(url))
     for img_num, spacex_url in enumerate(get_url_pic_spacex(url), 1):
-        print(img_num, spacex_url)
-        path = f'./images/spacex{img_num}.jpeg'
+        #print(img_num, spacex_url)
+        #print(get_extension_file(spacex_url))
+        path = f'./images/spacex{img_num}{get_extension_file(spacex_url)}'
         get_images(path, spacex_url)
