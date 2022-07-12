@@ -21,10 +21,11 @@ def get_APOD():
     url1 = 'https://api.nasa.gov/planetary/apod'
     settings = {
         'api_key': '8CZXBJ3Z1L4oYihhgJ1ZPC9uXqJafUydUNf7XetN',
+        'start_date': '2022-06-01'
     }
     responce = requests.get(url1, params=settings)
     responce.raise_for_status()
-    return responce.json()
+    return [i['url'] for i in responce.json()]
 
 
 def get_url_pic_spacex(spacex_url):
