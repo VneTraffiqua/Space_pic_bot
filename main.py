@@ -25,7 +25,7 @@ def get_APOD():
     }
     responce = requests.get(url1, params=settings)
     responce.raise_for_status()
-    return [i['url'] for i in responce.json()]
+    return [i['url'] for i in responce.json() if i['media_type'] == 'image']
 
 
 def get_url_pic_spacex(spacex_url):
@@ -44,3 +44,8 @@ if __name__ == '__main__':
         #print(get_extension_file(spacex_url))
         path = f'./images/spacex{img_num}{get_extension_file(spacex_url)}'
         get_images(path, spacex_url)
+
+    for img_num, APOD_url in enumerate(get_APOD(), 1):
+        #print(img_num, APOD_url)
+        path = f'./images/NASA{img_num}{get_extension_file(APOD_url)}'
+        get_images(path, APOD_url)
