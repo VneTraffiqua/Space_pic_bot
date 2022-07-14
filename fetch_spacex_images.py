@@ -11,7 +11,6 @@ def get_args():
 
 
 def get_url_pic_spacex(spacex_url):
-    Path('./images').mkdir(parents=True, exist_ok=True)
     response = requests.get(
         f'{spacex_url}'
     )
@@ -20,6 +19,7 @@ def get_url_pic_spacex(spacex_url):
 
 
 if __name__ == '__main__':
+    Path('./images').mkdir(parents=True, exist_ok=True)
     launch_id = get_args().launch_id
     if launch_id:
         url_launch = f'https://api.spacexdata.com/v5/launches/{launch_id}'
