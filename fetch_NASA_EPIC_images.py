@@ -1,8 +1,7 @@
 import requests
-import urllib.parse
 import os
 from dotenv import load_dotenv
-import main
+import get_func
 from pathlib import Path
 
 
@@ -32,4 +31,4 @@ if __name__ == '__main__':
         settings_epic_url = {
             'api_key': f'{nasa_token}',
         }
-        main.get_images(path, EPIC_url, settings_epic_url)
+        get_func.get_images(path, EPIC_url, settings_epic_url)
