@@ -1,6 +1,6 @@
 import requests
 from pathlib import Path
-import main
+import get_func
 import argparse
 
 
@@ -26,5 +26,5 @@ if __name__ == '__main__':
     else:
         url_launch = 'https://api.spacexdata.com/v5/launches/latest'
     for img_num, img_url in enumerate(get_url_pic_spacex(url_launch), 1):
-        path = f'./images/spacex{img_num}{main.get_extension_file(img_url)}'
-        main.get_images(path, img_url)
+        path = f'./images/spacex{img_num}{get_func.get_extension_file(img_url)}'
+        get_func.get_images(path, img_url)
