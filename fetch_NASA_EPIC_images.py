@@ -29,7 +29,7 @@ if __name__ == '__main__':
                    f'{image_date[0]}/{image_date[1]}/{image_date[2]}/' \
                    f'png/{image_id}.png'
         path = f'./images/NASA_EPIC_{img_num}.png'
-        settings = {
+        settings_epic_url = {
             'api_key': f'{nasa_token}',
         }
-        main.get_images(path, EPIC_url, settings)
+        main.get_images(path, EPIC_url, settings_epic_url)
