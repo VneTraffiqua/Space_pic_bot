@@ -1,8 +1,7 @@
 import requests
 from dotenv import load_dotenv
 from pathlib import Path
-import main
-import argparse
+import get_func
 import os
 
 
@@ -23,5 +22,5 @@ if __name__ == '__main__':
     start_date_apod = os.getenv('start_date_APOD')
     Path('./images').mkdir(parents=True, exist_ok=True)
     for img_num, APOD_url in enumerate(get_APOD(), 1):
-        path = f'./images/NASA{img_num}{main.get_extension_file(APOD_url)}'
-        main.get_images(path, APOD_url)
+        path = f'./images/NASA{img_num}{get_func.get_extension_file(APOD_url)}'
+        get_func.get_images(path, APOD_url)
