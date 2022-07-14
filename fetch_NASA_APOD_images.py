@@ -7,14 +7,14 @@ import os
 
 
 def get_APOD():
-    url1 = 'https://api.nasa.gov/planetary/apod'
+    url_nasa = 'https://api.nasa.gov/planetary/apod'
     settings = {
         'api_key': f'{nasa_token}',
         'start_date': f'{start_date_apod}'
     }
-    responce = requests.get(url1, params=settings)
-    responce.raise_for_status()
-    return [i['url'] for i in responce.json() if i['media_type'] == 'image']
+    response = requests.get(url_nasa, params=settings)
+    response.raise_for_status()
+    return [i['url'] for i in response.json() if i['media_type'] == 'image']
 
 
 if __name__ == '__main__':
