@@ -3,7 +3,7 @@ import urllib.parse
 import os
 
 
-def get_extension_file(user_url):
+def get_extension(user_url):
     parsed_url = urllib.parse.urlsplit(user_url)
     return os.path.splitext(parsed_url.path)[1]
 
