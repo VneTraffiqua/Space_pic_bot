@@ -13,7 +13,9 @@ def get_APOD():
     }
     response = requests.get(url_nasa, params=settings)
     response.raise_for_status()
-    return [i['url'] for i in response.json() if i['media_type'] == 'image']
+    return [i['url'] for i in response.json()
+            if i['media_type'] == 'image'
+            ]
 
 
 if __name__ == '__main__':
