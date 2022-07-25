@@ -2,6 +2,7 @@ import requests
 from pathlib import Path
 import get_func
 import argparse
+import os
 
 
 def get_args():
@@ -19,7 +20,8 @@ def get_url_pic_spacex(spacex_url):
 
 
 if __name__ == '__main__':
-    Path('./images').mkdir(parents=True, exist_ok=True)
+    img_path = os.getenv('IMG_PATH')
+    Path(f'{img_path}').mkdir(parents=True, exist_ok=True)
     launch_id = get_args().launch_id
     if launch_id:
         url_launch = f'https://api.spacexdata.com/v5/launches/{launch_id}'
