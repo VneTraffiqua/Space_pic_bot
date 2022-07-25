@@ -1,13 +1,22 @@
+import time
 import telegram
 import os
 from dotenv import load_dotenv
+import random
+import get_func
 
 
-load_dotenv()
-tg_token = os.getenv('TELEGRAM_TOKEN')
-bot = telegram.Bot(token=f'{tg_token}')
-bot.send_document(chat_id=709161558, document=open('images/NASA2.jpg', 'rb'))
-
-
-updates = bot.get_updates()
-print([u.message.photo for u in updates if u.message.photo])
+if __name__ == '__main__':
+    load_dotenv()
+    tg_token = os.getenv('TELEGRAM_TOKEN')
+    img_path = os.getenv('IMG_PATH')
+    bot = telegram.Bot(token=f'{tg_token}')
+    img_names = [i for i in get_func.get_img_names(img_path)]
+    while True:
+        for img_name in get_func.get_img_names(img_path):
+            bot.send_document(
+                chat_id=os.getenv('CHAT_ID'),
+                document=open(f'{img_path}/{img_name}', 'rb')
+            )
+            time.sleep(int(os.getenv('TIMER')))
+        random.shuffle(img_names)
