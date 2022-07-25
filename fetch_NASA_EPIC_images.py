@@ -19,8 +19,9 @@ def get_EPIC_url():
 if __name__ == '__main__':
     load_dotenv()
     nasa_token = os.getenv('NASA_TOKEN')
-    start_data_epic = os.getenv('start_date_EPIC')
-    Path('./images').mkdir(parents=True, exist_ok=True)
+    start_data_epic = os.getenv('START_DATE_EPIC')
+    img_path = os.getenv('IMG_PATH')
+    Path(f'{img_path}').mkdir(parents=True, exist_ok=True)
     for img_num, EPIC_data in enumerate(get_EPIC_url(), 1):
         image_id = EPIC_data['image']
         image_date = EPIC_data['date'].split()[0].split('-')
