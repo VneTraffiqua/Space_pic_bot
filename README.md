@@ -37,10 +37,11 @@ Run `fetch_NASA_APOD_images.py` to download NASA APOD.
 Run `fetch_NASA_EPIC_images.py` to download NASA EPIC.
 
 #### Work with telegram-bot:
-Run `telegram_bot.py` to publish images from a collection(`IMG_PATH`) after the specified time(`TIMER`)
+Run `telegram_bot.py` to publish images from a collection(`IMG_PATH`) after the specified time(`TIMER`). 
+The script will publish images until you interrupt it.
 
 Run `Post_one_img.py` with the optional parameter "image name" to publish specified image.
-Run `Post_one_img.py` without the optional parameter to publish random image from collection
+Run `Post_one_img.py` without the optional parameter to publish random image from collection.
 
 =========================================================
 
