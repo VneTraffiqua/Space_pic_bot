@@ -25,5 +25,6 @@ if __name__ == '__main__':
     start_date_apod = os.getenv('START_DATE_APOD')
     Path(f'{img_path}').mkdir(parents=True, exist_ok=True)
     for img_num, APOD_url in enumerate(get_APOD(), 1):
-        path = f'{img_path}/NASA{img_num}{get_func.get_extension(APOD_url)}'
+        path = Path.cwd() / f'{img_path}' / \
+               f'NASA{img_num}{get_func.get_extension(APOD_url)}'
         get_func.get_images(path, APOD_url)
