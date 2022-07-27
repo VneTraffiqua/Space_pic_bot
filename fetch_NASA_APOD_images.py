@@ -8,8 +8,8 @@ import os
 def get_APOD():
     url_nasa = 'https://api.nasa.gov/planetary/apod'
     settings = {
-        'api_key': f'{nasa_token}',
-        'start_date': f'{start_date_apod}'
+        'api_key': nasa_token,
+        'start_date': start_date_apod
     }
     response = requests.get(url_nasa, params=settings)
     response.raise_for_status()
