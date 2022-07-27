@@ -3,6 +3,8 @@ from pathlib import Path
 import get_func
 import argparse
 import os
+from dotenv import load_dotenv
+
 
 
 def get_args():
@@ -20,6 +22,7 @@ def get_url_pic_spacex(spacex_url):
 
 
 if __name__ == '__main__':
+    load_dotenv()
     img_path = os.getenv('IMG_PATH')
     Path(f'{img_path}').mkdir(parents=True, exist_ok=True)
     launch_id = get_args().launch_id
@@ -28,5 +31,6 @@ if __name__ == '__main__':
     else:
         url_launch = 'https://api.spacexdata.com/v5/launches/latest'
     for img_num, img_url in enumerate(get_url_pic_spacex(url_launch), 1):
-        path = f'./images/spacex{img_num}{get_func.get_extension(img_url)}'
+        path = Path.cwd() / f'{img_path}' / \
+               f'spacex{img_num}{get_func.get_extension(img_url)}'
         get_func.get_images(path, img_url)
