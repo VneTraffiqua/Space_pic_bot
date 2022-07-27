@@ -8,8 +8,8 @@ from pathlib import Path
 def get_EPIC_url():
     url1 = 'https://api.nasa.gov/EPIC/api/natural/images'
     settings = {
-        'api_key': f'{nasa_token}',
-        'start_date': f'{start_data_epic}'
+        'api_key': nasa_token,
+        'start_date': start_data_epic
     }
     response = requests.get(url1, params=settings)
     response.raise_for_status()
