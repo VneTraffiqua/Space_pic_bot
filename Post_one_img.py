@@ -23,12 +23,12 @@ if __name__ == '__main__':
     img_names = [i for i in get_func.get_img_names(img_path)]
     if img_name:
         bot.send_document(
-            chat_id=os.getenv('CHAT_ID'),
+            chat_id=os.getenv('TG_CHAT_ID'),
             document=open(Path.cwd() / f'{img_path}' / f'{img_name}', 'rb')
         )
     else:
         bot.send_document(
-            chat_id=os.getenv('CHAT_ID'),
+            chat_id=os.getenv('TG_CHAT_ID'),
             document=open(
                 Path.cwd() /
                 f'{img_path}' /
