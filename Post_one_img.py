@@ -17,7 +17,7 @@ if __name__ == '__main__':
     load_dotenv()
     tg_token = os.getenv('TELEGRAM_TOKEN')
     img_path = os.getenv('IMG_PATH')
-    bot = telegram.Bot(token=f'{tg_token}')
+    bot = telegram.Bot(token=tg_token)
     img_names = [i for i in get_func.get_img_names(img_path)]
     if img_name:
         bot.send_document(
