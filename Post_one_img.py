@@ -4,6 +4,8 @@ from dotenv import load_dotenv
 import random
 import argparse
 import get_func
+from pathlib import Path
+
 
 
 def get_args():
@@ -22,10 +24,15 @@ if __name__ == '__main__':
     if img_name:
         bot.send_document(
             chat_id=os.getenv('CHAT_ID'),
-            document=open(f'{img_path}/{img_name}', 'rb')
+            document=open(Path.cwd() / f'{img_path}' / f'{img_name}', 'rb')
         )
     else:
         bot.send_document(
             chat_id=os.getenv('CHAT_ID'),
-            document=open(f'{img_path}/{random.choice(img_names)}', 'rb')
+            document=open(
+                Path.cwd() /
+                f'{img_path}' /
+                f'{random.choice(img_names)}',
+                'rb'
+            )
         )
