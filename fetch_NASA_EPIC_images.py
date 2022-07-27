@@ -28,7 +28,7 @@ if __name__ == '__main__':
         EPIC_url = f'https://api.nasa.gov/EPIC/archive/natural/' \
                    f'{image_date[0]}/{image_date[1]}/{image_date[2]}/' \
                    f'png/{image_id}.png'
-        path = f'./images/NASA_EPIC_{img_num}.png'
+        path = Path.cwd() / f'{img_path}' / f'NASA_EPIC_{img_num}.png'
         settings_epic_url = {
             'api_key': f'{nasa_token}',
         }
