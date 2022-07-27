@@ -22,7 +22,7 @@ Get your telegram chat ID: write `/start` to @getmyid_bot in telegram.
 - `NASA_TOKEN` -  NASA token to work with the API
 - `START_DATE_APOD` - the start of a date range, when requesting date for a range of  APOD images
 - `START_DATE_EPIC` - the start of a date range, when requesting date for a range of  EPIC images
-- `TELEGRAM_TOKEN` - yelegram token to work with the API
+- `TELEGRAM_TOKEN` - telegram token to work with the API
 - `CHAT_ID` - your user ID in telegram
 - `TIMER` - a timer for delayed posts.(measured in seconds)
 - `IMG_PATH` - path to images folder
@@ -30,7 +30,7 @@ Get your telegram chat ID: write `/start` to @getmyid_bot in telegram.
 #### Collect images of space:
 
 Run `fetch_spacex_images.py` with the optional parameter "id", to download images from the rocket launch by a given id.
-Run without the optional parameter to download i,ages from the latest rocket launch.
+Run without the optional parameter to download images from the latest rocket launch.
 
 Run `fetch_NASA_APOD_images.py` to download NASA APOD.
 
