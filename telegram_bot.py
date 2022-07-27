@@ -17,7 +17,7 @@ if __name__ == '__main__':
     while True:
         for img_name in get_func.get_img_names(img_path):
             bot.send_document(
-                chat_id=os.getenv('CHAT_ID'),
+                chat_id=os.getenv('TG_CHAT_ID'),
                 document=open(Path.cwd() / f'{img_path}' / f'{img_name}', 'rb')
             )
             time.sleep(int(os.getenv('TIMER')))
