@@ -4,6 +4,8 @@ import os
 from dotenv import load_dotenv
 import random
 import get_func
+from pathlib import Path
+
 
 
 if __name__ == '__main__':
@@ -16,7 +18,7 @@ if __name__ == '__main__':
         for img_name in get_func.get_img_names(img_path):
             bot.send_document(
                 chat_id=os.getenv('CHAT_ID'),
-                document=open(f'{img_path}/{img_name}', 'rb')
+                document=open(Path.cwd() / f'{img_path}' / f'{img_name}', 'rb')
             )
             time.sleep(int(os.getenv('TIMER')))
         random.shuffle(img_names)
