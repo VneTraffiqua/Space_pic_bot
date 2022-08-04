@@ -1,11 +1,14 @@
 import requests
 import urllib.parse
 import os
+from dotenv import load_dotenv
+
 
 
 def get_extension(user_url):
     parsed_url = urllib.parse.urlsplit(user_url)
-    return os.path.splitext(parsed_url.path)[1]
+    link, extension = os.path.splitext(parsed_url.path)
+    return extension
 
 
 def get_img_names(path):
@@ -22,10 +25,9 @@ def get_images(file_path, images_url, settings=None):
         file.write(response.content)
 
 
-def get_img_names(path):
-    for file in os.listdir(path):
-        if os.path.isfile(os.path.join(path, file)):
-            yield file
+def get_global_variable(arg):
+    load_dotenv()
+    return os.getenv(arg)
 
 
 
