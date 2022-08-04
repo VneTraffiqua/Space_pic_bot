@@ -1,11 +1,8 @@
 import telegram
-import os
-from dotenv import load_dotenv
 import random
 import argparse
-import get_func
 from pathlib import Path
-
+import HelperScripts
 
 
 def get_args():
@@ -14,25 +11,23 @@ def get_args():
     return parser.parse_args()
 
 
-if __name__ == '__main__':
+def main():
     img_name = get_args().img_name
-    load_dotenv()
-    tg_token = os.getenv('TELEGRAM_TOKEN')
-    img_path = os.getenv('IMG_PATH')
-    bot = telegram.Bot(token=tg_token)
-    img_names = [i for i in get_func.get_img_names(img_path)]
-    if img_name:
+    img_path = HelperScripts.get_global_variable('IMG_PATH')
+    bot = telegram.Bot(
+        token=HelperScripts.get_global_variable('TELEGRAM_TOKEN')
+    )
+    img_names = [
+        img_name for img_name in HelperScripts.get_img_names(img_path)
+    ]
+    with open(Path.cwd() /
+              f'{img_path}' /
+              f'{img_name if img_name else random.choice(img_names)}', 'rb'
+              ) as document:
         bot.send_document(
-            chat_id=os.getenv('TG_CHAT_ID'),
-            document=open(Path.cwd() / f'{img_path}' / f'{img_name}', 'rb')
+            chat_id=HelperScripts.get_global_variable('TG_CHAT_ID'),
+            document=document
         )
-    else:
-        bot.send_document(
-            chat_id=os.getenv('TG_CHAT_ID'),
-            document=open(
-                Path.cwd() /
-                f'{img_path}' /
-                f'{random.choice(img_names)}',
-                'rb'
-            )
-        )
+
+if __name__ == '__main__':
+    main()
