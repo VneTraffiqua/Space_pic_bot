@@ -3,6 +3,8 @@ import random
 import argparse
 from pathlib import Path
 import HelperScripts
+import os
+from dotenv import load_dotenv
 
 
 def get_args():
@@ -12,20 +14,22 @@ def get_args():
 
 
 def main():
+    load_dotenv()
+    img_path = os.getenv('IMG_PATH')
     img_name = get_args().img_name
-    img_path = HelperScripts.get_global_variable('IMG_PATH')
     bot = telegram.Bot(
-        token=HelperScripts.get_global_variable('TELEGRAM_TOKEN')
+        token=os.getenv('TELEGRAM_TOKEN')
     )
     img_names = [
-        img_name for img_name in HelperScripts.get_img_names(img_path)
+        img_name for img_name in HelperScripts.get_img_names(
+            os.getenv('IMG_PATH'))
     ]
     with open(Path.cwd() /
               f'{img_path}' /
               f'{img_name if img_name else random.choice(img_names)}', 'rb'
               ) as document:
         bot.send_document(
-            chat_id=HelperScripts.get_global_variable('TG_CHAT_ID'),
+            chat_id=os.getenv('TG_CHAT_ID'),
             document=document
         )
 
