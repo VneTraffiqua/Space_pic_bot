@@ -31,18 +31,35 @@ Get your telegram chat ID: write `/start` to @getmyid_bot in telegram.
 
 Run `fetch_spacex_images.py` with the optional parameter "id", to download images from the rocket launch by a given id.
 Run without the optional parameter to download images from the latest rocket launch.
+```commandline
+python3 fetch_spacex_images.py 5eb87d47ffd86e000604b38a
+```
 
 Run `fetch_NASA_APOD_images.py` to download NASA APOD.
+```commandline
+python3 fetch__NASA_APOD_images.py
+```
 
 Run `fetch_NASA_EPIC_images.py` to download NASA EPIC.
+```commandline
+python3 fetch__NASA_EPIC_images.py
+```
 
 #### Work with telegram-bot:
 Run `telegram_bot.py` to publish images from a collection(`IMG_PATH`) after the specified time(`TIMER`). 
 The script will publish images until you interrupt it.
+```commandline
+python3 telegram_bot.py
+```
 
 Run `Post_one_img.py` with the optional parameter "image name" to publish specified image.
+```commandline
+python3 Post_one_img.py NASA1.jpg
+```
 Run `Post_one_img.py` without the optional parameter to publish random image from collection.
-
+```commandline
+python3 Post_one_img.py
+```
 =========================================================
 
 The code is written for educational purposes on online-course for web-developers [dvmn.org](https://dvmn.org).
