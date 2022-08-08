@@ -1,8 +1,6 @@
 import requests
 import urllib.parse
 import os
-from dotenv import load_dotenv
-
 
 
 def get_extension(user_url):
@@ -17,17 +15,8 @@ def get_img_names(path):
             yield img_name
 
 
-def get_images(file_path, images_url, settings=None):
+def save_images(file_path, images_url, settings=None):
     response = requests.get(images_url, params=settings)
     response.raise_for_status()
-
     with open(file_path, 'wb') as file:
         file.write(response.content)
-
-
-def get_global_variable(arg):
-    load_dotenv()
-    return os.getenv(arg)
-
-
-
