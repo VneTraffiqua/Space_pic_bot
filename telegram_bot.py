@@ -3,12 +3,15 @@ import telegram
 import random
 from pathlib import Path
 import HelperScripts
+from dotenv import load_dotenv
+import os
 
 
 def main():
-    img_path = HelperScripts.get_global_variable('IMG_PATH')
+    load_dotenv()
+    img_path = os.getenv('IMG_PATH')
     bot = telegram.Bot(
-        token=HelperScripts.get_global_variable('TELEGRAM_TOKEN')
+        token=os.getenv('TELEGRAM_TOKEN')
     )
     img_names = [
         img_name for img_name in HelperScripts.get_img_names(img_path)
@@ -19,10 +22,10 @@ def main():
                     Path.cwd() / f'{img_path}' / f'{img_name}', 'rb'
             ) as document:
                 bot.send_document(
-                    chat_id=HelperScripts.get_global_variable('TG_CHAT_ID'),
+                    chat_id=os.getenv('TG_CHAT_ID'),
                     document=document
                 )
-            time.sleep(int(HelperScripts.get_global_variable('TIMER')))
+            time.sleep(int(os.getenv('TIMER')))
         random.shuffle(img_names)
 
 
