@@ -8,8 +8,10 @@ from dotenv import load_dotenv
 
 
 def get_args():
-    parser = argparse.ArgumentParser()
-    parser.add_argument('img_name', nargs='?')
+    parser = argparse.ArgumentParser(
+        description='Post_one_img.py publish specified image or random image.'
+    )
+    parser.add_argument('img_name', nargs='?', help='Enter a image name')
     return parser.parse_args()
 
 
@@ -21,8 +23,7 @@ def main():
         token=os.getenv('TELEGRAM_TOKEN')
     )
     img_names = [
-        img_name for img_name in HelperScripts.get_img_names(
-            os.getenv('IMG_PATH'))
+        img_name for img_name in HelperScripts.get_img_names(img_path)
     ]
     with open(Path.cwd() /
               f'{img_path}' /
