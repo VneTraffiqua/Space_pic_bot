@@ -7,8 +7,14 @@ from dotenv import load_dotenv
 
 
 def get_args():
-    parser = argparse.ArgumentParser()
-    parser.add_argument('launch_id', nargs='?', default='latest')
+    parser = argparse.ArgumentParser(
+        description='Script to download images from the Spacex rocket launch'
+    )
+    parser.add_argument(
+        'launch_id', nargs='?',
+        default='latest',
+        help='Spacex rocket launch id'
+    )
     return parser.parse_args()
 
 
