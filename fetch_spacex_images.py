@@ -35,7 +35,7 @@ def main():
     for img_num, img_url in enumerate(get_url_pic_spacex(launch_url), 1):
         path = Path.cwd() / f'{img_path}' / \
                f'spacex{img_num}{HelperScripts.get_extension(img_url)}'
-        HelperScripts.save_images(path, img_url)
+        HelperScripts.save_image(path, img_url)
 
 
 if __name__ == '__main__':
