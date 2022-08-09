@@ -25,14 +25,14 @@ def main():
     img_names = [
         img_name for img_name in HelperScripts.get_img_names(img_path)
     ]
-    with open(Path.cwd() /
-              f'{img_path}' /
-              f'{img_name if img_name else random.choice(img_names)}', 'rb'
-              ) as document:
+    image_path = Path.cwd() / f'{img_path}' / \
+           f'{img_name if img_name else random.choice(img_names)}'
+    with open(image_path, 'rb') as document:
         bot.send_document(
             chat_id=os.getenv('TG_CHAT_ID'),
             document=document
         )
+
 
 if __name__ == '__main__':
     main()
