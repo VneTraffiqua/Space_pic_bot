@@ -29,7 +29,7 @@ def main():
     ):
         path = Path.cwd() / f'{img_path}' / \
                f'NASA{img_num}{HelperScripts.get_extension(apod_url)}'
-        HelperScripts.save_images(path, apod_url)
+        HelperScripts.save_image(path, apod_url)
 
 
 if __name__ == '__main__':
