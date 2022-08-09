@@ -34,7 +34,7 @@ def main():
         settings_epic_url = {
             'api_key': nasa_token,
         }
-        HelperScripts.save_images(path, epic_url, settings_epic_url)
+        HelperScripts.save_image(path, epic_url, settings_epic_url)
 
 
 if __name__ == '__main__':
